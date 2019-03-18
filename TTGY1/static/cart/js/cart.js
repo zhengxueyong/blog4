@@ -89,6 +89,7 @@ $(function(){
 
     //购物车中加减按钮
         $("body").on("click",".cut",function(){
+
             console.log('11111111');
             var cutNum = $(this).parent(".number").find(".num_number").val();
             cutNum--;

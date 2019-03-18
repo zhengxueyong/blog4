@@ -26,8 +26,8 @@ def index(request):
 
     return render(request,'index.html' ,context={'user':user ,'goods':goods})
 
-def cart(request):
-    return render(request,'cart.html')
+
+
 def info(request):
     return render(request,'info.html')
 
@@ -161,7 +161,7 @@ def addcart(request):
                 cart.save()
             response_data['status']=1
             response_data['number']=cart.number
-            response_data['msg']='添加{}购物车成功：{}'.format(cart.goods.g_name,cart.number)
+            response_data['msg']='添加{}购物车成功：{}'.format(cart.goods.name,cart.number)
 
 
             return JsonResponse(response_data)
@@ -171,17 +171,17 @@ def addcart(request):
 
 
 def cart(request):
-    token=request.session.get('token')
-    user=User.objects.get(token=token)
-    carts=Cart.objects.filter(user=user)
-    price=0
-    price1=0
-    for cart in carts:
-        price+=float(cart.goods.g_price)*float(cart.number)
-
-
-    return render(request,'cart.html',context={'carts':carts,'price':price, })
-
+    # token=request.session.get('token')
+    # user=User.objects.get(token=token)
+    # carts=Cart.objects.filter(user=user)
+    # price=0
+    # price1=0
+    # for cart in carts:
+    #     price+=float(cart.goods.price)*float(cart.number)
+    #
+    #
+    # return render(request,'cart.html',context={'carts':carts,'price':price, })
+    return render(request, 'cart.html')
 
 def subcart(request):
     return None
