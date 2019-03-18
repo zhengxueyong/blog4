@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -101,31 +101,13 @@
             </div>
         </div>
     </div>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div  class="swiper-slide"><img src='{% static 'img/banner1.jpg' %}' alt="">></div>
-            <div class="swiper-slide"><img src='{% static 'img/banner2.jpg' %}' alt="">Slide 2</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner3.jpg' %}' alt="">Slide 3</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner4.jpg' %}' alt="">Slide 4</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner5.jpg' %}' alt="">Slide 5</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner6.jpg' %}' alt="">Slide 6</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner7.jpg' %}' alt="">Slide 7</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner8.jpg' %}' alt="">Slide 8</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner9.jpg' %}' alt="">Slide 9</div>
-            <div class="swiper-slide"><img src='{% static 'img/banner1.jpg' %}' alt="">Slide 10</div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
+
     <div id="cart_no_content">
         购物车中还没有商品，赶紧选购吧！
     </div>
     <div id="cart_content">
         <ul id="cart_list">
-            <!--<li class="cart_list_same">
+            <li class="cart_list_same">
                 <div class="cart_list_left"><img src="img/fruit_small_1.0.jpg"></div>
                 <div class="cart_list_center">
                     <p class="cart_price">美国有籽红提</p>
@@ -152,12 +134,25 @@
 </div>
 
 <!--轮播图-->
-<div id="banner">
-    <ul id="list">
-    </ul>
-    <ul id="list2">
-    </ul>
-</div>
+<div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div  class="swiper-slide"><img src='{% static 'img/banner1.jpg' %}' alt="">></div>
+            <div class="swiper-slide"><img src='{% static 'img/banner2.jpg' %}' alt="">Slide 2</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner3.jpg' %}' alt="">Slide 3</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner4.jpg' %}' alt="">Slide 4</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner5.jpg' %}' alt="">Slide 5</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner6.jpg' %}' alt="">Slide 6</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner7.jpg' %}' alt="">Slide 7</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner8.jpg' %}' alt="">Slide 8</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner9.jpg' %}' alt="">Slide 9</div>
+            <div class="swiper-slide"><img src='{% static 'img/banner1.jpg' %}' alt="">Slide 10</div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
 
 <!--价格-->
 <div class="price">
@@ -171,8 +166,24 @@
 
 <!--水果栏-->
 <div class="fruit">
-    <div class="fruit_content">
+    <div class="fruit_content" style="height: 1000px;width: 100%" >
         <p><img src="{% static 'img/guan_t1.png'%}"><span>更多&gt;</span></p>
+
+
+        {% for  good in goods %}
+
+
+
+                <span  class="center2_con" style="float:left" >
+                    <a href="{% url 'app:info'%}">
+                    <img src="{{ good.icon }}" alt="">
+                    <span><h5> {{ good.name }}</h5>
+                    <em> <i>￥{{ good.price }}</i> <b>推荐的理由</b> </em>
+                        <p>{{ good.detail }}</p>
+                    </span>
+                    </a>
+                </span>
+            {% endfor %}
 
     </div>
 </div>

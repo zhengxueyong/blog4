@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <link href="{% static 'login/css/login.css' %}" rel="stylesheet">
     <script src="{% static 'login/js/jquery-1.12.3.js' %}"></script>
     <script src="{% static 'login/js/jquery.cookie.js' %}"></script>
-    <script src="{% static 'login/js/login.js' %}"></script>
+    <!--<script src="{% static 'login/js/login.js' %}"></script>-->
     <link rel="shortcut icon" href="{% static 'img/tit.png' %}"/>
 
 </head>
@@ -73,12 +73,12 @@
             {% csrf_token %}
                     <div class="main_input">
                         <label for="phone_num">手机号</label><input name="phone_num" type="text">
-                        <i id="i_phone_num"><img src="img/yes.png"></i>
+                        <i id="i_phone_num"><img src=""></i>
                     </div>
                     <div class="main_input">
                         <label for="password">密码</label>
                         <input name="password" type="password" placeholder="请输入6-20位号码字符">
-                        <i id="i_password"><img src="img/yes.png"></i>
+                        <i id="i_password"><img src=""></i>
                     </div>
 
                     <div class="re_password">

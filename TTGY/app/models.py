@@ -11,8 +11,6 @@ class Goods(models.Model):
     # 商品描述
     detail = models.CharField(max_length=255)
 
-    class Meta:
-        db_table = 'goods'
 
 
 class User(models.Model):
@@ -21,6 +19,19 @@ class User(models.Model):
     # 密码
     t_password = models.CharField(max_length=256)
     token = models.CharField(max_length=256)
+class Cart(models.Model):
+    user=models.ForeignKey(User)
+    goods=models.ForeignKey(Goods)
+    number=models.IntegerField(default=1)
+    isselect=models.BooleanField(default=True)
 
+class Order(models.Model):
+    user=models.ForeignKey(User)
+    number=models.CharField(max_length=256)
+    status=models.IntegerField(default=1)
+    createtime=models.DateTimeField(auto_now=True)
 
-
+class OrderGoods(models.Model):
+    order=models.ForeignKey(Order)
+    goods=models.ForeignKey(Goods)
+    number=models.IntegerField(default=1)

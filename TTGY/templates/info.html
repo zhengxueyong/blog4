@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -121,15 +121,15 @@
     <div class="main_content">
         <p class="main_nav"><b>首页</b> &gt;新鲜水果 &gt;<span>泰国山竹</span></p>
         <div id="main_left">
-            <img src="{% static 'img/fruit_small_1.0.jpg' %}">
-            <img src="{% static 'img/fruit_small_1.1.jpg' %}">
-            <img src="{% static 'img/fruit_small_1.2.jpg' %}">
+            <!--<img src="{% static 'img/fruit_small_1.0.jpg' %}">-->
+            <!--<img src="{% static 'img/fruit_small_1.1.jpg' %}">-->
+            <!--<img src="{% static 'img/fruit_small_1.2.jpg' %}">-->
         </div>
         <div id="main_center">
-            <img class="smallImg" src="{% static 'img/fruit_big_1.0.jpg' %}">
-            <img class="smallImg" src="{% static 'img/fruit_big_1.1.jpg' %}">
-            <img class="smallImg" src="{% static 'img/fruit_big_1.2.jpg' %}">
-            <div id="smallArea"></div>
+           <!--<img class="smallImg" src="{% static 'img/fruit_big_1.0.jpg' %}">-->
+            <!--<img class="smallImg" src="{% static 'img/fruit_big_1.1.jpg' %}">-->
+            <!--<img class="smallImg" src="{% static 'img/fruit_big_1.2.jpg' %}">-->
+            <<div id="smallArea"></div>
         </div>
 
         <div id="bigArea">
@@ -140,10 +140,14 @@
             <div class="introduce">
                 <!--<h3 id="name">泰国山竹</h3>
                 <p id="introduce_text">果肉甜沁 点亮味蕾</p>-->
+                <h3 id="name">泰国山竹</h3>
+                <p id="introduce_text">果肉甜沁 点亮味蕾</p>
             </div>
 
             <div class="price">
-                <div class="price_left"><h5>果园价</h5><!--<b id="i_price">￥99.00</b>--><b id="i_price">￥99.00</b></div>
+
+
+                <div class="price_left"><h5></h5><!--b id="i_price">￥99.00</--b>--><b id="i_price">￥99.00</b></div>
                 <div class="price_right"><i></i></div>
             </div>
             <div class="norms"><h5>规格</h5> <!--<input type="button" value="4个">-->
@@ -159,15 +163,19 @@
             </div>
             <div class="number">
                 <h5>数量</h5>
+
+
+
                 <input type="button" class="info_cut" value="-">
-                <input id="num_number" type="button" value="1">h
+                <input id="num_number" type="button" value="1">个
                 <input type="button" class="info_add" value="+">
             </div>
-
             <div class="main_btn">
-                <input id="buy" type="button" value="立即购买" >
-                <input id="add_car" type="button" value="加入购物车">
+                <input id="buy" type="submit" value="立即购买" >
+                <input id="add_car" type="button" value="加入购物车" href=" ">
             </div>
+
+
 
             <hr>
 
