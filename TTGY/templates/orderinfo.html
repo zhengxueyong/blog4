@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单</title>
+</head>
+<body>
+<h1>订单页面</h1>
+<p>亲爱的用户 <span>  <a href="{% url 'app:index' %}">继续购物</a></span></p>
+{% for order in orders %}
+
+订单详情：<p>创建的时间：{{ order.createtime }} &nbsp; 订单编号：{{ order.number }} &nbsp;订单状态：{{ order.status }}&nbsp;  <span><a
+        href="#">支付</a></span></p>
+
+{% endfor %}
+
+
+</body>
+</html>
