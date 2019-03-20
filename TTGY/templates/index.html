@@ -41,8 +41,8 @@
 <i style="float: left ;left:250px; position: absolute">用户名：{{ user.t_phone }} &nbsp; <a href="{% url 'app:logout' %}">注销</a></i>
             <ul>
                 <li class="user"></li>
-                <li><a class="act aaa" href="#">[登录]</a></li>
-                <li><a class="act aaa" href="../register/register.html">[注册有惊喜] </a></li>
+                <li><a class="act aaa" href="{% url 'app:login' %}">[登录]</a></li>
+                <li><a class="act aaa" href="{% url 'app:register' %}">[注册有惊喜] </a></li>
                 <li id="notice"><a href="#">果园公告 </a>
                     <div id="top_right_notice">
                             <ul>
@@ -175,7 +175,7 @@
 
 
                 <span  class="center2_con" style="float:left" >
-                    <a href="{% url 'app:info'%}">
+                    <a href="{% url 'app:info' good.id %}">
                     <img src="{{ good.icon }}" alt="">
                     <span><h5> {{ good.name }}</h5>
                     <em> <i>￥{{ good.price }}</i> <b>推荐的理由</b> </em>
@@ -194,14 +194,14 @@
             <p><img src="{% static 'img/guan_t2.png'%}"><span>更多&gt;</span></p>
 
             <div class="fruit_list">
-                <a href="{% url 'app:info' %}" class="a_fruit_list"> <div class="fruit_list_img"><img class="same_img" src="{% static 'img/allfruit1.jpg'%}"></div>
+                <a href="#" class="a_fruit_list"> <div class="fruit_list_img"><img class="same_img" src="{% static 'img/allfruit1.jpg'%}"></div>
                 </a>
                 <p>琯溪红玉蜜柚</p>
                 <span> ￥39.90/2个</span>
                 <i class="fruit_cart"><img class="same_cart" src="{% static 'img/cart.png'%}"></i>
             </div>
 
-            <a href="{% url 'app:info' %}" class="a_fruit_list">
+            <a href="#" class="a_fruit_list">
                 <div class="fruit_list">
                     <div class="fruit_list_img"><img class="same_img" src="{% static 'img/allfruit5.jpg'%}"></div>
                     <p>云南脆柿</p>
@@ -209,7 +209,7 @@
                     <i class="fruit_cart"><img class="same_cart" src="{% static 'img/cart.png'%}"></i>
                 </div>
             </a>
-            <a href="{% url 'app:info' %}" class="a_fruit_list">
+            <a href="#" class="a_fruit_list">
                 <div class="fruit_list">
                     <div class="fruit_list_img"><img class="same_img" src="{% static 'img/allfruit2.jpg'%}"></div>
                     <p>美国无籽青提</p>

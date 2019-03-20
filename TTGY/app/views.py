@@ -14,33 +14,16 @@ from django.core.cache import cache
 # Create your views here.
 from app.models import Goods, User, OrderGoods, Cart, Order
 
-
 def index(request):
     token=request.session.get('token')
     user=None
     if token:
         user=User.objects.get(token=token)
-        goods=Goods.objects.all()
+    goods=Goods.objects.all()
+
+
 
     return render(request,'index.html' ,context={'user':user ,'goods':goods})
-
-def info(request):
-    return render(request,'info.html')
-
-def genrate_token():
-    token = str(time.time()) + str(random.random())
-    md5 = hashlib.md5()
-    md5.update(token.encode('utf-8'))
-
-    return md5.hexdigest()
-
-
-def genrate_password(password):
-    md5 = hashlib.md5()
-    md5.update(password.encode('utf-8'))
-    return md5.hexdigest()
-
-
 def register(request):
     if request.method=='GET':
 
@@ -82,115 +65,44 @@ def login(request):
             return render(request,'index.html')
 
 
-def goods(request):
+def info(request,index=1):
+    token = request.session.get('token')
+    users = User.objects.filter(token=token)
+    good = Goods.objects.get(id=index)
+    if users.exists():
 
-    # token=request.session.get('token')
-    # users=User.objects.filter(token=token)
-    goods=Goods.objects.all()
-    # if users.exists():
+        return render(request, 'info.html', context={'good': good})
+    else:
 
-    return render(request,'index.html',context={'goods':goods})
-    # else:
-    #
-    #     return render(request,'login.html')
+        return render(request, 'login.html')
+def cart(request,index=1):
+    carts=Cart.objects.get(id=index)
+    return render(request, 'cart.html', context={'carts': carts})
+
+def genrate_token():
+    token = str(time.time()) + str(random.random())
+    md5 = hashlib.md5()
+    md5.update(token.encode('utf-8'))
+
+    return md5.hexdigest()
+
+
+def genrate_password(password):
+    md5 = hashlib.md5()
+    md5.update(password.encode('utf-8'))
+    return md5.hexdigest()
+
+
+
+
+
+
+
 
 
 def logout(request):
     request.session.flush()
     response=redirect('app:index')
-
-
-    return response
-
-def logout(request):
-    request.session.flush()
-    response=redirect('pet:homepage')
     return response
 
 
-def addcart(request):
-    response_data={}
-
-    token=request.session.get('token','')
-    print('333 ')
-    if token:
-        users=User.objects.filter(token=token)
-
-        if users.exists():
-            user=users.first()
-            goodsid = request.GET.get('goodid')
-            good = Goods.objects.get(pk=goodsid)
-            carts=Cart.objects.filter(user=user).filter(goods=good)
-            if carts.exists():
-                cart=carts.first()
-                cart.number=cart.number+1
-                cart.save()
-            else:
-                cart=Cart()
-                cart.goods=good
-                cart.user=user
-                cart.number=1
-                cart.save()
-            response_data['status']=1
-            response_data['number']=cart.number
-            response_data['msg']='添加{}购物车成功：{}'.format(cart.goods.name,cart.number)
-
-
-            return JsonResponse(response_data)
-    response_data['status'] = -1
-    response_data['msg'] = '请登录后操作'
-    return JsonResponse(response_data)
-def cart(request):
-    token=request.session.get('token')
-    user=User.objects.get(token=token)
-    carts=Cart.objects.filter(user=user)
-    price=0
-    price1=0
-    for cart in carts:
-        price+=float(cart.goods.price)*float(cart.number)
-
-
-    return render(request,'cart.html',context={'carts':carts,'price':price, })
-    # return render(request, 'cart.html')
-
-def subcart(request):
-    return None
-
-
-def changecart(request):
-    return None
-
-
-def changeselect(request):
-    return None
-
-
-def generateorder(request):
-    token=request.session.get('token')
-    if token :
-        user=User.objects.get(token=token)
-        order=Order()
-        order.user=user
-        order.number=str(uuid.uuid5(uuid.uuid4(), 'order'))
-        order.save()
-
-
-        carts=Cart.objects.filter(user=user).filter(isselect=True)
-        for cart in carts:
-            orderGoods=OrderGoods()
-            orderGoods.order=order
-            orderGoods.goods=cart.goods
-            orderGoods.number=cart.number
-            orderGoods.save()
-            cart.delete()
-
-    orders=Order.objects.all()
-    return render(request,'orderinfo.html',context={'orders':orders,})
-
-
-def orderinfo(request):
-    return None
-
-
-def changeorder(request):
-    return None

@@ -83,7 +83,7 @@
         </div>
         <div class="nav_center">
             <ul>
-                <li><a href="{% url 'app:index'%}">首页<br>Home</a></li>
+                <li><a href="{% static 'index.html' %}">首页<br>Home</a></li>
                 <li><a>鲜果<br>Fruit</a></li>
                 <li><a>生鲜<br>Fresh</a></li>
                 <li><a>礼品<br>Gift</a></li>
@@ -119,7 +119,7 @@
 <!--商品介绍购买-->
 <div class="main">
     <div class="main_content">
-        <p class="main_nav"><b>首页</b> &gt;新鲜水果 &gt;<span>泰国山竹</span></p>
+        <p class="main_nav"><b>首页</b> &gt;新鲜水果 &gt;<span>{{ good.name }}</span></p>
         <div id="main_left">
             <!--<img src="{% static 'img/fruit_small_1.0.jpg' %}">-->
             <!--<img src="{% static 'img/fruit_small_1.1.jpg' %}">-->
@@ -133,22 +133,21 @@
         </div>
 
         <div id="bigArea">
-            <img id="bigImg" src="{% static '' %}">
+            <img id="bigImg" src="{{ good.icon }}">
         </div>
 
         <div class="main_right">
             <div class="introduce">
                 <!--<h3 id="name">泰国山竹</h3>
                 <p id="introduce_text">果肉甜沁 点亮味蕾</p>-->
-                <h3 id="name">泰国山竹</h3>
-                <p id="introduce_text">果肉甜沁 点亮味蕾</p>
+                <h3 id="name">{{ good.name }}</h3>
+                <p id="introduce_text">{{ good.detail }}</p>
             </div>
 
             <div class="price">
 
 
-                <div class="price_left"><h5></h5><!--b id="i_price">￥99.00</--b>--><b id="i_price">￥99.00</b></div>
-                <div class="price_right"><i></i></div>
+c                <div class="price_right"><i></i></div>
             </div>
             <div class="norms"><h5>规格</h5> <!--<input type="button" value="4个">-->
 <input type="button" value="大">
@@ -171,8 +170,8 @@
                 <input type="button" class="info_add" value="+">
             </div>
             <div class="main_btn">
-                <input id="buy" type="submit" value="立即购买" >
-                <input id="add_car" type="submit" value="加入购物车" href=" {% url 'app:cart'%}">
+                <input id="buy" type="button" value="立即购买" >
+                <input id="add_car" type="button" value="加入购物车" href=" {% url 'app:cart' %}">
             </div>
 
 
